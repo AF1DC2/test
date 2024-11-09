@@ -132,18 +132,28 @@ button:hover {
 }
 
 .formRow input,
-.formRow select {
-  width: 48%; /* Each field takes half of the row */
+.formRow select,
+input[type="date"] {
+  width: 100%; /* Setăm lățimea fiecărui input/select să ocupe tot spațiul disponibil */
+  max-width: 210px; /* Setăm o lățime maximă pentru a menține consistența */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 20px;
   box-sizing: border-box;
-  height: 42px; /* Ensures select box matches input height */
-  appearance: none; /* Removes default select dropdown styling in some browsers */
+  height: 42px; /* Înălțime consistentă pentru toate elementele */
+  appearance: none; /* Eliminăm stilul de dropdown specific browserului */
 }
 
-select:focus {
+input[type="date"] {
+  color: #333; /* Culoarea textului */
+  background-color: #ffffff; /* Fundal alb */
+}
+
+select:focus, 
+input[type="date"]:focus {
   outline: none;
   border-color: #7b61ff;
 }
+
+
