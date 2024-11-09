@@ -22,7 +22,7 @@ const Layout = () => {
                 />
             </header>
             <Outlet />
-            <div className="button-container">
+            <footer className="footer">
                 <button className="nav-button" onClick={() => navigate('/Hist')}>
                     <FaFileMedical />
                 </button>
@@ -38,7 +38,7 @@ const Layout = () => {
                 <button className="nav-button" onClick={() => navigate('/Profile')}>
                     <RiProfileFill />
                 </button>
-            </div>
+            </footer>
         </div>
     );
 };

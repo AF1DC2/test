@@ -1,38 +1,34 @@
 // src/components/Meds.js
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/Med.css';
 
 const Meds = () => {
-  const [meds, setMeds] = useState([]); // State to hold meds data
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [meds, setMeds] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  // Fetch meds data from the backend
   useEffect(() => {
     const fetchMeds = async () => {
       try {
         const response = await fetch('https://4rlhxmck-5000.euw.devtunnels.ms/api/doctors', {
           method: "GET",
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        }); // Update this URL to match your endpoint
+          headers: { 'Content-Type': 'application/json' }
+        });
         if (!response.ok) {
           throw new Error('Failed to fetch meds');
         }
-
         const data = await response.json();
-        console.log("Fetched data:", data);
-        setMeds(data); // Set the data in state
-        setLoading(false); // Set loading to false
+        setMeds(data);
+        setLoading(false);
       } catch (error) {
         setError(error.message);
         setLoading(false);
       }
     };
-
-    fetchMeds(); // Call the function
-  }, []); // Empty dependency array so it runs once on mount
+    fetchMeds();
+  }, []);
 
   if (loading) return <p>Loading doctors...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -47,6 +43,12 @@ const Meds = () => {
               <h3 className="name">{med.first_name} {med.last_name}</h3>
               <p className="info">Specialty: {med.specialty}</p>
               <p className="info">Availability hours: {med.availability_hours}</p>
+              <button
+                className="appointment-button"
+                onClick={() => navigate('/appt')}
+              >
+                Appointment
+              </button>
             </div>
           ))}
         </div>
@@ -55,6 +57,6 @@ const Meds = () => {
       )}
     </div>
   );
-}
+};
 
 export default Meds;

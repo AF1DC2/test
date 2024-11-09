@@ -4,26 +4,28 @@
   src: url(../resources/BPreplay.otf);
 }
 
-*{
+* {
   font-family: BPReplay;
 }
 
-body { 
-  font-family: Arial, sans-serif;
-  background-color: #f6fffc;
-  background-image:  radial-gradient(#27c5bc 0.9px, transparent 0.9px), radial-gradient(#27c5bc 0.9px, #f6fffc 0.9px);
-  background-size: 36px 36px;
-  background-position: 0 0,18px 18px;
-  margin: 0;
+body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #f6fffc;
+  background-image: radial-gradient(#27c5bc 0.9px, transparent 0.9px),
+    radial-gradient(#27c5bc 0.9px, #f6fffc 0.9px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+  flex-direction: column; /* Makes sure the body can grow vertically */
 }
 
 .home-container {
-  width: 100%;
-  max-width: 1200px;
+  width: 800px; /* Fixed width */
+  min-height: 600px; /* Minimum height to ensure content area grows */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +33,15 @@ body {
   background-color: #ffffffae;
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  position: relative;
+  flex-grow: 1; /* Ensures container grows with content */
+}
+
+.Outlet {
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto; /* Ensures scrolling within the main content */
 }
 
 header {
@@ -44,6 +55,8 @@ header {
 }
 
 .logo {
+  margin-bottom: 0;
+  padding-bottom: 0;
   width: 180px;
   height: auto;
   cursor: pointer;
@@ -55,36 +68,36 @@ header {
   opacity: 0.9;
 }
 
-.button-container {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
+.footer {
   width: 100%;
-  max-width: 800px; /* Limit the width of the button container */
+  background-color: #f8f8f8;  /* Adjust to match your theme */
+  display: flex;
+  justify-content: space-around;
+  position: fixed;  /* Fixed position */
+  bottom: 0;        /* Aligns footer to the bottom of the page */
+  left: 0;          /* Aligns to the left side */
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .nav-button {
-  background-color: #02b7a5; /* Light teal background */
+  background-color: #02b7a5;
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  font-size: 28px;
-  cursor: pointer;
+  width: 50px; /* Smaller width */
+  height: 50px; /* Smaller height */
+  font-size: 14px; /* Smaller font size */
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-button:hover {
-  background-color: #115d58; /* Deep teal on hover */
+  background-color: #115d58;
   transform: translateY(-5px);
 }
 
@@ -95,61 +108,66 @@ header {
 /* Mobile Styles (Up to 768px) */
 @media (max-width: 768px) {
   .home-container {
-      padding: 10px;
+    padding: 10px;
   }
 
   header {
-      height: 80px;
+    height: 80px;
   }
 
   .logo {
-      width: 150px;
+    width: 150px;
   }
 
-  .button-container {
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 10px;
+  .footer {
+    padding: 10px;
   }
 
   .nav-button {
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
+    width: 50px;
+    height: 50px;
+    font-size: 16px; /* Slightly larger font size for mobile */
   }
 }
 
 /* Tablet Styles (768px to 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   .home-container {
-      padding: 15px;
+    padding: 15px;
   }
 
   .logo {
-      width: 160px;
+    width: 160px;
+  }
+
+  .footer {
+    padding: 15px;
   }
 
   .nav-button {
-      width: 65px;
-      height: 65px;
-      font-size: 26px;
+    width: 55px;
+    height: 55px;
+    font-size: 18px; /* Slightly larger font size for tablets */
   }
 }
 
 /* Larger Desktops */
 @media (min-width: 1200px) {
   .home-container {
-      padding: 30px;
+    padding: 30px;
   }
 
   .logo {
-      width: 200px;
+    width: 200px;
+  }
+
+  .footer {
+    padding: 20px;
   }
 
   .nav-button {
-      width: 80px;
-      height: 80px;
-      font-size: 32px;
+    width: 65px;
+    height: 65px;
+    font-size: 20px;
   }
 }
