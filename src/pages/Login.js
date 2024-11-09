@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/Login.css';
+import Home from "./Home";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
-  const [dbMessage, setDbMessage] = useState(''); // To display DB connection message
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,17 +53,6 @@ const Login = () => {
     }
   };
 
-  // Function to test database connection
-  const testDatabaseConnection = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/test-db'); // Adjust URL as needed
-      const data = await response.json();
-      setDbMessage(data.message); // Set the message to display on the page
-    } catch (error) {
-      setDbMessage('Error connecting to database', JSON.stringify(error));
-    }
-  };
-
   return (
     <div className="fadeOut">
       <div className="container">
@@ -94,9 +83,6 @@ const Login = () => {
               Don't have an account?
               <Link to="/signup" id="showSignUpLink">Sign up!</Link>
             </p>
-            {errorMsg && <div id="errorMsg">{errorMsg}</div>}
-            <button type="button" onClick={testDatabaseConnection}>Test Database Connection</button>
-            {dbMessage && <div id="dbMessage">{dbMessage}</div>}
           </div>
         </form>
       </div>

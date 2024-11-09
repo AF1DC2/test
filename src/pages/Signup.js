@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Signup.css';
 
 const Signup = () => {
@@ -14,6 +14,8 @@ const Signup = () => {
   const [gender, setGender] = useState('');
   const [address, setAddress] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -27,16 +29,52 @@ const Signup = () => {
     }
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password || !confirmPassword || !firstName || !lastName || !email || !phoneNumber) {
       setErrorMsg('All required fields must be filled out');
-    } else if (password !== confirmPassword) {
+      return;
+    }
+
+    if (password !== confirmPassword) {
       setErrorMsg('Passwords do not match');
-    } else {
-      setErrorMsg('');
-      // Handle successful signup (e.g., form submission, API call)
+      return;
+    }
+
+    setErrorMsg('');
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://4rlhxmck-5000.euw.devtunnels.ms/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          password,
+          phone_number: phoneNumber,
+          birth_date: birthDate,
+          gender,
+          address,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Signup successful!');
+        navigate('/login'); // Redirect to login page upon successful signup
+      } else {
+        setErrorMsg(data.message || 'An error occurred');
+      }
+    } catch (error) {
+      setErrorMsg('Network error. Please try again later.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -190,10 +228,14 @@ const Signup = () => {
               {/* Signup button and link */}
               <tr>
                 <td colSpan="2">
-                  <button type="submit" id="signupBtn">Sign up</button>
+                  <button type="submit" id="signupBtn" disabled={loading}>
+                    {loading ? 'Signing up...' : 'Sign up'}
+                  </button>
                   <p className="message">
-                    Already have an account? 
-                    <Link to="/login" id="showLoginLink">Log in!</Link>
+                    Already have an account?{' '}
+                    <Link to="/login" id="showLoginLink">
+                      Log in!
+                    </Link>
                   </p>
                 </td>
               </tr>
