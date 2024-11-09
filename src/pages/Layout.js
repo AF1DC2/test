@@ -23,16 +23,16 @@ const Layout = () => {
             </header>
             <Outlet />
             <div className="button-container">
-                <button className="nav-button" onClick={() => navigate('/Medical_History')}>
+                <button className="nav-button" onClick={() => navigate('/Hist')}>
                     <FaFileMedical />
                 </button>
-                <button className="nav-button" onClick={() => navigate('/Appointments')}>
+                <button className="nav-button" onClick={() => navigate('/Appt')}>
                     <FaHandHoldingMedical />
                 </button>
-                <button className="nav-button" onClick={() => navigate('/Symptoms')}>
+                <button className="nav-button" onClick={() => navigate('/Symp')}>
                     <BiPlusMedical />
                 </button>
-                <button className="nav-button" onClick={() => navigate('/Doctors')}>
+                <button className="nav-button" onClick={() => navigate('/Med')}>
                     <FaClinicMedical />
                 </button>
                 <button className="nav-button" onClick={() => navigate('/Profile')}>

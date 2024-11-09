@@ -18,10 +18,18 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="*" element={<Appz />} />
+        <Route path="" element={<Appz />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/nopage" element={<NoPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/med" element={<Med />} />
+          <Route path="/hist" element={<Hist />} />
+          <Route path="/appt" element={<Appt />} />
+          <Route path="/symp" element={<Symp />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
