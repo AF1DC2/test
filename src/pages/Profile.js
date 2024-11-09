@@ -1,8 +1,20 @@
 // src/App.js
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../css/Profile.css';
 
 const Profile = () => {
   const [user, setUser] = useState(null);  // State to hold user data
+
+  const navigate = useNavigate();
+    const logout = () => {
+  
+    // Clear the token from localStorage
+    localStorage.removeItem('authToken');
+
+    // Redirect the user to the login page
+    navigate('/login');
+    };
 
   useEffect(() => {
     // Fetch user data from the backend
@@ -36,6 +48,7 @@ const Profile = () => {
             <p><strong>Updated At:</strong> {user.updated_at}</p>
           </div>
         )}
+        <button onClick={logout} className="logout-button">Log Out</button>
     </div>
   );
 };

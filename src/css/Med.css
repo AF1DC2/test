@@ -58,3 +58,34 @@ body {
 .contact-button:hover {
     background-color: #357ab8;
 }
+
+/* Home.css */
+
+/* Basic styling for the header */
+header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style for the logout button */
+.logout-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 10px 20px;
+    background-color: #cae9e2;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    width: auto; /* Butonul se va adapta la conținutul său */
+    display: inline-block; /* Asigură-te că butonul nu ocupă lățimea completă */
+}
+
+.logout-button:hover {
+    background-color: #cae9e2;
+}

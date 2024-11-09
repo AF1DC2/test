@@ -1,7 +1,19 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/Med.css';
 
 const Med = () => {
+
+    const navigate = useNavigate();
+    const logout = () => {
+  
+    // Clear the token from localStorage
+    localStorage.removeItem('authToken');
+
+    // Redirect the user to the login page
+    navigate('/login');
+    };
+
     const medics = [
         { 
             id: 1, 
@@ -47,6 +59,7 @@ const Med = () => {
                     </div>
                 ))}
             </div>
+            <button onClick={logout} className="logout-button">Log Out</button>
         </div>
     );
 };
