@@ -58,7 +58,7 @@ body {
   width: 48%; /* Each field takes half of the row */
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ddd;
+  border: 1px solid #28a745;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -134,15 +134,16 @@ button:hover {
 .formRow input,
 .formRow select,
 input[type="date"] {
-  width: 100%; /* Setăm lățimea fiecărui input/select să ocupe tot spațiul disponibil */
+  width: 100%; 
   max-width: 210px; /* Setăm o lățime maximă pentru a menține consistența */
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ddd;
+  border: 2px solid #cae9e2;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 42px; /* Înălțime consistentă pentru toate elementele */
-  appearance: none; /* Eliminăm stilul de dropdown specific browserului */
+  height: 42px; 
+  appearance: none; 
+  text-align: center;
 }
 
 input[type="date"] {
@@ -150,10 +151,26 @@ input[type="date"] {
   background-color: #ffffff; /* Fundal alb */
 }
 
-select:focus, 
-input[type="date"]:focus {
+select {
+  width: 100%;
+  max-width: 210px; /* Ajustează lățimea pentru consistență */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #cae9e2;
+  border-radius: 20px; /* Colțuri rotunjite */
+  box-sizing: border-box;
+  height: 42px; /* Înălțime uniformă cu alte elemente */
+  color: #333;
+  background-color: #ffffff;
+  appearance: none; /* Ascunde stilul implicit al browserului */
+  cursor: pointer;
+}
+
+select:focus {
   outline: none;
   border-color: #7b61ff;
 }
+
+
 
 

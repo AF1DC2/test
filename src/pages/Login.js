@@ -42,6 +42,7 @@ const Login = () => {
 
       if (response.ok) {
         console.log("Login successful!");
+        localStorage.setItem('authToken', data.token); 
         navigate('/home'); // Redirect to home upon successful login
       } else {
         setErrorMsg(data.message || 'An error occurred');

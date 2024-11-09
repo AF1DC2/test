@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Hist from "./pages/Hist";
@@ -15,12 +15,17 @@ import Appz from "./Appz";
 
 
 export default function App() {
+
+  const isAuthenticated = !!localStorage.getItem("authToken");
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<Appz />} />
+      <Route path="/" element={isAuthenticated ? <Layout /> : <Navigate to="/login" />} />
+        <Route path="/allah" element={<Appz />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        {isAuthenticated && (
         <Route path="/" element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/nopage" element={<NoPage />} />
@@ -30,6 +35,7 @@ export default function App() {
           <Route path="/appt" element={<Appt />} />
           <Route path="/symp" element={<Symp />} />
         </Route>
+        )}
       </Routes>
     </BrowserRouter>
   );
