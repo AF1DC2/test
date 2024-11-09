@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/Signup.css';
+import caresync from '../resources/caresync.png';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -79,12 +80,17 @@ const Signup = () => {
   };
 
   return (
-    <div className="fadeOut">
-      <button id="theme">
-        <i className="fas fa-moon"></i>
-      </button>
       <div className="container">
+      
         <form onSubmit={handleSubmit} className="input">
+        <div className="formContainer">
+        <header>
+                    <img 
+                        src={caresync} 
+                        alt="caresync" 
+                        className="logo" 
+                    />
+            </header>
           <table className="formTable">
             <tbody>
               {/* Row 1: First Name and Last Name */}
@@ -224,8 +230,6 @@ const Signup = () => {
                   </td>
                 </tr>
               )}
-
-              {/* Signup button and link */}
               <tr>
                 <td colSpan="2">
                   <button type="submit" id="signupBtn" disabled={loading}>
@@ -241,8 +245,8 @@ const Signup = () => {
               </tr>
             </tbody>
           </table>
-        </form>
-      </div>
+          </div>
+      </form>
     </div>
   );
 };

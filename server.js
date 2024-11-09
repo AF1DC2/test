@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Endpoint to fetch the first user from the database
 app.get('/api/user', (req, res) => {
-  const query = 'SELECT * FROM users LIMIT 1'; // Adjust based on your table name and structure
+  const query = 'SELECT * FROM users WHERE user_id = 3'; // Adjust based on your table name and structure
   db.query(query, (err, results) => {
     if (err) {
       console.error('Database query error:', err);
@@ -24,6 +24,44 @@ app.get('/api/user', (req, res) => {
 
     // Send the first user's data
     res.json(results[0]);
+  });
+});
+
+app.get('/api/profile/:user_id', (req, res) => {
+  const query = `SELECT * FROM users WHERE user_id = ${req.params.user_id}`; // Adjust based on your table name and structure
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Database query error:', err);
+      res.status(500).send('Error fetching user from database');
+      return;
+    }
+
+    if (results.length === 0) {
+      res.status(404).send('No users found');
+      return;
+    }
+
+    res.json(results[0]);
+  });
+});
+
+
+app.get('/api/doctors', (req, res) => {
+  const query = 'SELECT first_name, last_name, specialty, availability_hours FROM doctors'; // SQL query to fetch all doctors
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Database query error:', err);
+      res.status(500).send('Error fetching doctors from database');
+      return;
+    }
+
+    if (results.length === 0) {
+      res.status(404).send('No doctors found');
+      return;
+    }
+
+    res.json(results);
   });
 });
 

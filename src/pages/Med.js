@@ -1,67 +1,58 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../css/Med.css';
+// src/components/Meds.js
+import React, { useEffect, useState } from 'react';
 
-const Med = () => {
+const Meds = () => {
+  const [meds, setMeds] = useState([]); // State to hold meds data
+  const [loading, setLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
 
-    const navigate = useNavigate();
-    const logout = () => {
-  
-    // Clear the token from localStorage
-    localStorage.removeItem('authToken');
+  // Fetch meds data from the backend
+  useEffect(() => {
+    const fetchMeds = async () => {
+      try {
+        const response = await fetch('https://4rlhxmck-5000.euw.devtunnels.ms/api/doctors', {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json',
+            }
+            }); // Update this URL to match your endpoint
+        if (!response.ok) {
+          throw new Error('Failed to fetch meds');
+        }
 
-    // Redirect the user to the login page
-    navigate('/login');
+        const data = await response.json();
+        setMeds(data); // Set the data in state
+        setLoading(false); // Set loading to false
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
     };
 
-    const medics = [
-        { 
-            id: 1, 
-            name: 'Dr. John Doe', 
-            specialty: 'Cardiology', 
-            phone: '123-456-7890', 
-            address: '123 Heart St, Health City'
-        },
-        { 
-            id: 2, 
-            name: 'Dr. Jane Smith', 
-            specialty: 'Neurology', 
-            phone: '987-654-3210', 
-            address: '456 Brain Ave, Neuro Town'
-        },
-        { 
-            id: 3, 
-            name: 'Dr. Emily Johnson', 
-            specialty: 'Pediatrics', 
-            phone: '555-123-4567', 
-            address: '789 Child Rd, Family Village'
-        },
-        { 
-            id: 4, 
-            name: 'Dr. Michael Brown', 
-            specialty: 'Orthopedics', 
-            phone: '111-222-3333', 
-            address: '321 Bone Blvd, Health City'
-        },
-    ];
+    fetchMeds(); // Call the function
+  }, []); // Empty dependency array so it runs once on mount
 
-    return (
-        <div>
-            <div className="med-container">
-                {medics.map((medic) => (
-                    <div key={medic.id} className="med-card">
-                        <h2>{medic.name}</h2>
-                        <p><strong>Specialty:</strong> {medic.specialty}</p>
-                        <p><strong>Phone:</strong> {medic.phone}</p>
-                        <p><strong>Address:</strong> {medic.address}</p>
-                        <button className="contact-button"> Contact
-                        </button>
-                    </div>
-                ))}
-            </div>
-            <button onClick={logout} className="logout-button">Log Out</button>
-        </div>
-    );
+  if (loading) return <p>Loading doctors...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div>
+      <h2>List Of Doctors</h2>
+      {meds.length > 0 ? (
+        <ul>
+          {meds.map((med) => (
+            <li key={med.doctor_id}>
+              <h1>{med.first_name} {med.last_name}</h1>
+              <p>Specialty: {med.specialty}</p>
+              <p>Availability hours: {med.availability_hours}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No doctors found.</p>
+      )}
+    </div>
+  );
 };
 
-export default Med;
+export default Meds;

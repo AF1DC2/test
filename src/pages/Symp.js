@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import '../css/Symp.css';
+import { LuLogOut } from "react-icons/lu";
+
 
 const Symp = () => {
     const navigate = useNavigate();
@@ -7,7 +9,7 @@ const Symp = () => {
   
     // Clear the token from localStorage
   localStorage.removeItem('authToken');
-
+  localStorage.removeItem('user');
   // Redirect the user to the login page
   navigate('/login');
 };
@@ -16,7 +18,7 @@ const Symp = () => {
             <header>
             Symptoms Log
             </header>
-            <button onClick={logout} className="logout-button">Log Out</button>
+            <button onClick={logout} className="logout-button"><LuLogOut /></button>
         </div>
     );
 };

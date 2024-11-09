@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import '../css/Appt.css';
+import { LuLogOut } from "react-icons/lu";
 
 const Appt = () => {
     const navigate = useNavigate();
@@ -7,6 +8,7 @@ const Appt = () => {
   
     // Clear the token from localStorage
   localStorage.removeItem('authToken');
+  localStorage.removeItem('user');
 
   // Redirect the user to the login page
   navigate('/login');
@@ -16,7 +18,9 @@ const Appt = () => {
             <header>
             Appointment
             </header>
-            <button onClick={logout} className="logout-button">Log Out</button>
+            <button onClick={logout} className="logout-button">
+            <LuLogOut />
+            </button>
         </div>
     );
 };

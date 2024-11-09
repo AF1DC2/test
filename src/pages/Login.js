@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/Login.css';
-import Home from "./Home";
+import caresync from '../resources/caresync.png';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -43,6 +44,7 @@ const Login = () => {
       if (response.ok) {
         console.log("Login successful!");
         localStorage.setItem('authToken', data.token); 
+        localStorage.setItem('user', data.user_id);
         navigate('/home'); // Redirect to home upon successful login
       } else {
         setErrorMsg(data.message || 'An error occurred');
@@ -55,10 +57,17 @@ const Login = () => {
   };
 
   return (
-    <div className="fadeOut">
       <div className="container">
+          
         <form onSubmit={handleSubmit} className="input">
           <div className="formContainer">
+            <header>
+                    <img 
+                        src={caresync} 
+                        alt="caresync" 
+                        className="logo" 
+                    />
+            </header>
             <input
               id="email"
               type="email"
@@ -87,7 +96,6 @@ const Login = () => {
           </div>
         </form>
       </div>
-    </div>
   );
 };
 

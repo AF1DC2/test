@@ -1,4 +1,4 @@
-/* Home.css */
+/* Hist.css */
 
 /* Basic styling for the header */
 header {
@@ -17,7 +17,7 @@ header {
     background-color: #cae9e2;
     color: black;
     border: none;
-    border-radius: 3px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 0.9rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
