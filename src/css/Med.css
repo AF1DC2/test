@@ -1,91 +1,52 @@
-/* Med.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f8fc;
+/* src/css/Med.css */
+.container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-}
-
-.med-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    color: #5c5cdb; /* Adjust to your color palette */
+    margin-bottom: 20px;
+  }
+  
+  .card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    padding: 20px;
-}
-
-.med-card {
-    background-color: #fff;
+  }
+  
+  .card {
+    background-color: #f9f9fc;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 250px;
     text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.med-card:hover {
-    transform: translateY(-5px);
-}
-
-.med-card h2 {
-    font-size: 20px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .name {
+    font-size: 1.2em;
     color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .info {
+    font-size: 0.9em;
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  p {
     margin: 0;
-}
-
-.med-card p {
-    font-size: 14px;
-    color: #555;
-    margin: 8px 0;
-}
-
-.contact-button {
-    background-color: #4a90e2;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-}
-
-.contact-button:hover {
-    background-color: #357ab8;
-}
-
-/* Home.css */
-
-/* Basic styling for the header */
-header {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Style for the logout button */
-.logout-button {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 10px 20px;
-    background-color: #cae9e2;
-    color: black;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    width: auto; /* Butonul se va adapta la conținutul său */
-    display: inline-block; /* Asigură-te că butonul nu ocupă lățimea completă */
-}
-
-.logout-button:hover {
-    background-color: #cae9e2;
-}
+  }
+  

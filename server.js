@@ -47,7 +47,7 @@ app.get('/api/profile/:user_id', (req, res) => {
 
 
 app.get('/api/doctors', (req, res) => {
-  const query = 'SELECT first_name, last_name, specialty, availability_hours FROM doctors'; // SQL query to fetch all doctors
+  const query = 'SELECT doctor_id, first_name, last_name, specialty, availability_hours FROM doctors'; // SQL query to fetch all doctors
 
   db.query(query, (err, results) => {
     if (err) {
