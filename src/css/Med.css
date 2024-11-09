@@ -1,0 +1,60 @@
+/* Med.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f8fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.med-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.med-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.med-card:hover {
+    transform: translateY(-5px);
+}
+
+.med-card h2 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+}
+
+.med-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 8px 0;
+}
+
+.contact-button {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.contact-button:hover {
+    background-color: #357ab8;
+}

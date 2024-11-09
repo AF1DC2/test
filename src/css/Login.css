@@ -1,0 +1,84 @@
+/* login.css */  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+    
+  .input {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  input {
+    text-align: center;
+    padding: 10px;
+    margin: 5px 0;
+    border: 2px solid #cae9e2;
+    border-radius: 20px;
+    font-size: 16px;
+  }
+
+  input:hover{
+    cursor: pointer;
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #7b61ff;
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #0fb8a7;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #036056;
+    color: #e0eee8;
+  }
+  
+  .message {
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  #showSignUpLink {
+    color: #0fb8a7;
+    text-decoration: none;
+  }
+  
+  #showSignUpLink:hover {
+    text-decoration: underline;
+  }
+  
+  #errorMsg {
+    color: #e74c3c;
+    font-size: 14px;
+    text-align: center;
+  }
